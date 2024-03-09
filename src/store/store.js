@@ -2,11 +2,13 @@
 import { createStore } from "redux";
 // Код файла store.js
 
+// create store
 const store = createStore(reducer);
 
 // starting mean
 const initialState = { value: 0 };
 
+// initial actions
 const ACTION_1 = "ACTION_1";
 const ACTION_2 = "ACTION_2";
 
