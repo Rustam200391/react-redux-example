@@ -1,6 +1,6 @@
 # React + Vite
 
-<iApp with add redux components
+<App with add redux components
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
