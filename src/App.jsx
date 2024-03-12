@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Popup from "./components/PopUp";
 import "./App.css";
 
 function App() {
@@ -6,7 +7,9 @@ function App() {
 
   return (
     <>
+      <Popup />
       <h1>Vite + React</h1>
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
