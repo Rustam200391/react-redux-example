@@ -1,33 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./style.css";
 
-function Popup() {
+export const PopUp = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => {
-    console.log("close");
+  const [wasOpened, setWasOpened] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+    setWasOpened(true);
+  };
+
+  const closeModal = () => {
     setIsOpen(false);
   };
-  const handleOpen = () => {
-    console.log("open");
-    setIsOpen(true);
-  };
+
+  useEffect(() => {
+    if (wasOpened) {
+      console.log("Modal is open");
+    }
+  }, [wasOpened]);
+
+  useEffect(() => {
+    if (!isOpen && wasOpened) {
+      console.log("Modal is closed");
+      setWasOpened(false); // Устанавливаем wasOpened в false после закрытия модального окна
+    }
+  }, [isOpen, wasOpened]);
 
   return (
     <div>
-      <button onClick={handleOpen}>Открыть модальное окно</button>
-      {/* () => setIsOpen(true) */}
-      {isOpen && (
-        <div className="popup">
-          <div className="popup__content">
-            <span onClick={handleClose} className="close">
-              &times;
-            </span>
-            <p>Текст сообщения в Pop-up</p>
-          </div>
-        </div>
-      )}
+      <button onClick={openModal} className="modal-open">
+        Открыть модальное окно?
+      </button>
+      {isOpen &&
+        createPortal(
+          <div className="modal-overlay">
+            <div className="modal">
+              <button className="modal-close-btn" onClick={closeModal}>
+                &times;
+              </button>
+              <div className="modal-content">
+                <h2>Modal window</h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Ipsam eligendi natus corporis expedita voluptate, sapiente
+                  fugit quasi quaerat nisi modi labore amet sit perspiciatis
+                  beatae, cum pariatur perferendis suscipit eum.
+                </p>
+              </div>
+            </div>
+          </div>,
+          document.getElementById("modals")
+        )}
     </div>
   );
-}
+};
 
-export default Popup;
+// https://react.dev/reference/react-dom/createPortal#usage
