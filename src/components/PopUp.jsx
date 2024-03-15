@@ -24,7 +24,7 @@ export const PopUp = () => {
   useEffect(() => {
     if (!isOpen && wasOpened) {
       console.log("Modal is closed");
-      setWasOpened(false); // Устанавливаем wasOpened в false после закрытия модального окна
+      setWasOpened(false); //   false после закрытия модального окна
     }
   }, [isOpen, wasOpened]);
 
