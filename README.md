@@ -4,7 +4,7 @@ App with add redux components
 
 <i>Continue learn redux </i>
 
-<p>Continue learn redux 
+<pContinue learn redux 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
